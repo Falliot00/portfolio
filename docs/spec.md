@@ -23,3 +23,13 @@ Estudio editorial de software: fondo marfil, tipografía de gran escala, acentos
 ## Revisión
 
 La carpeta inicial estaba vacía y no tenía Git ni HEAD. Se registra una base vacía antes de incorporar todos los archivos de esta tarea; la revisión final incluye desde esa base hasta HEAD, staged, unstaged y nuevos archivos.
+
+## Ampliación autorizada: Vercel
+
+El usuario pidió publicar este portfolio en Vercel y reemplazar el sitio anterior en `https://fermin-alliot.vercel.app/`.
+
+- Reutilizar el proyecto y conservar el dominio existente.
+- Configurar la compilación estática de Astro y conectar el nuevo repositorio `Falliot00/portfolio`, rama `main`.
+- Excluir investigación privada, credenciales y archivos locales de la carga a Vercel.
+- Comprobar en producción la landing, el CV, los recursos y una ruta 404 antes de declarar el reemplazo completo.
+- Documentar la configuración y los resultados. Base de esta ampliación: `3111c46`.

@@ -54,4 +54,8 @@ El flujo del proyecto es investigación con `research`, implementación según `
 
 ## Publicación
 
-La compilación produce `dist/`. **No se realizó un despliegue a hosting como parte de esta entrega.** Subir el repositorio a GitHub y publicar un sitio web son pasos independientes. Antes de un futuro despliegue, definí el dominio y comprobá las rutas `/`, `/cv` y la página 404 en el proveedor elegido.
+Publicado en **[fermin-alliot.vercel.app](https://fermin-alliot.vercel.app/)**, con el [CV imprimible](https://fermin-alliot.vercel.app/cv/). Se reutilizó el proyecto Vercel `portfolio-front-end` para conservar el dominio del sitio anterior.
+
+`vercel.json` declara Astro, `npm ci`, `npm run build` y salida `dist`. El proyecto remoto utiliza la raíz del repositorio y Node 24.x. `.vercelignore` excluye credenciales, investigación privada y artefactos locales de las cargas por CLI. El dominio canónico se configura en `astro.config.mjs`.
+
+La publicación inicial se realizó por CLI; la conexión automática con `Falliot00/portfolio` está pendiente de autorizar el acceso de la integración Vercel a ese repositorio. Configuración, fuentes y procedimiento en [docs/vercel-readiness.md](docs/vercel-readiness.md); comprobaciones efectivas en [docs/validation.md](docs/validation.md).

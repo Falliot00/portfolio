@@ -1,0 +1,15 @@
+.git/
+.agents/
+.research/
+.scratch/
+.astro/
+.vercel/
+node_modules/
+dist/
+test-results/
+playwright-report/
+tests/
+docs/
+.env
+.env.*
+*.log
