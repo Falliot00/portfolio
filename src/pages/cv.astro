@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { profile, projects, expertise, timeline } from '../data/portfolio';
+---
+<Layout title="Currículum — Fermín Alliot" description={profile.summary}>
+  <a class="skip-link" href="#cv">Saltar al currículum</a>
+  <div class="cv-toolbar wrap"><a class="text-link" href="/">← Volver al portfolio</a><button id="print-cv" class="button button-dark" type="button" hidden>Imprimir / Guardar PDF <Icon name="print" size={18}/></button><noscript>Para guardar como PDF, usá la opción Imprimir de tu navegador.</noscript></div>
+  <main id="cv" class="cv-sheet">
+    <header class="cv-header"><p class="eyebrow">CURRÍCULUM / PERFIL TÉCNICO</p><h1>{profile.name}</h1><p class="cv-role">{profile.role}</p><p>{profile.location}</p><div class="cv-contact"><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.github}>github.com/Falliot00</a><a href={profile.linkedin}>LinkedIn: Fermín Alliot</a></div></header>
+    <section><h2>Perfil</h2><p>{profile.summary}</p></section>
+    <section><h2>Tecnologías</h2><div class="cv-skills">{expertise.map((area) => <p><strong>{area.name}</strong><br/>{area.tools.join(' · ')}</p>)}</div></section>
+    <section><h2>Proyectos seleccionados</h2>{projects.map((project) => <article class="cv-project"><div><h3>{project.name}</h3><span>{project.period}</span></div><p>{project.description} {project.solution}</p><p class="cv-project-tech">{project.stack.join(' · ')} / {project.privacy}</p>{project.source && <a class="cv-source" href={project.source}>{project.source.replace('https://', '')}</a>}</article>)}</section>
+    <section><h2>Recorrido por proyectos</h2>{timeline.map((item) => <p><strong>{item.year} — {item.title}.</strong> {item.description}</p>)}</section>
+    <section><h2>Formación</h2><p><strong>Tecnicatura Universitaria en Programación — UTN</strong><br/>Formación documentada en proyectos académicos de programación y bases de datos de 2025–2026.</p><p><strong>Argentina Programa</strong><br/>Proyectos integradores full stack con Angular y Spring Boot, 2023.</p></section>
+    <footer class="cv-note">Portfolio basado en proyectos. Los casos privados se describen de forma anónima. Actualizado en septiembre de 2026.</footer>
+  </main>
+</Layout>
+<script>
+  const printButton = document.querySelector<HTMLButtonElement>('#print-cv');
+  if (printButton) {
+    printButton.hidden = false;
+    printButton.addEventListener('click', () => window.print());
+  }
+</script>

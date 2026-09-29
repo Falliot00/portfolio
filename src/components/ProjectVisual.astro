@@ -1,0 +1,12 @@
+---
+import type { Project } from '../data/portfolio';
+interface Props { kind: Project['kind'] }
+const { kind } = Astro.props;
+---
+<div class:list={['project-visual', `visual-${kind}`]} aria-hidden="true">
+  <span class="visual-note mono">VISTA CONCEPTUAL</span>
+  {kind === 'property' && <div class="property-scene"><div class="building building-one"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="building building-two"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="concept-panel"><span class="mono">TU OPERACIÓN, EN ORDEN.</span><div><i></i><b>Propiedades</b><span>↗</span></div><div><i></i><b>Contratos</b><span>↗</span></div><div><i></i><b>Administración</b><span>↗</span></div></div><span class="scene-cross">+</span></div>}
+  {kind === 'transport' && <div class="transport-scene"><svg viewBox="0 0 520 210" fill="none"><path d="M-20 175H125Q150 175 150 150V70Q150 45 175 45H325Q350 45 350 70V130Q350 155 375 155H540" stroke="currentColor" stroke-width="2" stroke-dasharray="5 6"/><path d="M-20 100H60Q85 100 85 75V25M440 220V40Q440 15 465 15H530" stroke="currentColor" stroke-width="1" opacity=".25"/><circle cx="150" cy="100" r="8" fill="currentColor"/><circle cx="350" cy="97" r="8" fill="currentColor"/></svg><div class="transport-chip chip-one"><i></i>Seguimiento de flota</div><div class="transport-chip chip-two"><span>↗</span> Alarmas & documentación</div><span class="route-coordinate mono">OPERACIÓN / CONECTADA</span></div>}
+  {kind === 'hardware' && <div class="hardware-scene"><div class="device"><span class="mono">LECTOR / 01</span><div class="device-screen"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><small>CAPTURA</small><b></b></div><div class="connection-line"><i></i><i></i><i></i><span>→</span></div><div class="api-block"><span class="mono">{'{ }'}</span><strong>API</strong><small>INTEGRACIÓN</small></div></div>}
+  {kind === 'catalog' && <div class="catalog-scene"><div class="data-table"><span class="mono">PRODUCTO</span><div><b>id</b><span>primary key</span><i>↗</i></div><div><b>nombre</b><span>string</span></div><div><b>código</b><span>unique</span></div></div><div class="barcode-card"><div class="barcode"></div><span class="mono">DATOS CONSISTENTES.</span><b>COMMIT ✓</b></div></div>}
+</div>

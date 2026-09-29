@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Architecture from '../components/Architecture.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { profile, projects, expertise, timeline, archive } from '../data/portfolio';
+---
+<Layout>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#inicio" aria-label="Fermín Alliot, inicio">fa<span>↗</span></a>
+    <nav aria-label="Navegación principal"><a href="#proyectos">Proyectos</a><a href="#sobre-mi">Sobre mí</a><a href="#recorrido">Recorrido</a></nav>
+    <a class="header-contact" href="#contacto">Hablemos <Icon name="arrow" size={17} /></a>
+  </header>
+  <main id="contenido">
+    <section class="hero wrap" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow"><span class="status-dot"></span> FERMÍN ALLIOT · FULL STACK DEVELOPER</p>
+        <h1 id="hero-title">Ideas claras.<br />Código que<br /><span>las conecta.</span><span class="hero-asterisk" aria-hidden="true">✳</span></h1>
+        <p class="hero-description">Transformo procesos en aplicaciones web.<br class="desktop-break" /> De la interfaz a los datos, con atención a cada detalle.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#proyectos">Explorar proyectos <Icon name="down" size={18} /></a><a class="text-link" href="/cv/">Ver mi CV <Icon name="arrow" size={18} /></a></div>
+        <p class="hero-location mono"><span class="location-symbol" aria-hidden="true">⌖</span> SANTA FE, ARGENTINA <span class="location-divider">/</span> DESARROLLO CON PROPÓSITO</p>
+      </div>
+      <Architecture />
+    </section>
+    <div class="tech-strip"><div class="wrap"><span class="mono">MI CAJA DE HERRAMIENTAS</span><div><span>TypeScript</span><i>✳</i><span>React & Next.js</span><i>✳</i><span>Node.js</span><i>✳</i><span>SQL</span><i>✳</i><span>Python</span></div></div></div>
+    <section class="section wrap" id="proyectos" aria-labelledby="projects-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / TRABAJO SELECCIONADO</p><h2 id="projects-title">Del problema<br />a la solución<span class="accent">.</span></h2></div><p>Sistemas de gestión, operaciones e integraciones.<br />Una selección de lo que vengo construyendo.</p></div>
+      <div class="project-grid">{projects.map((project) => <ProjectCard project={project} />)}</div>
+      <details class="archive"><summary><span>También en mi recorrido <span class="mono">/ MÁS PROYECTOS</span></span><Icon name="plus" /></summary><div class="archive-grid">{archive.map((item) => <article><p class="eyebrow">{item.type}</p><h3>{item.name}</h3><p>{item.description}</p>{item.source && <a class="text-link" href={item.source} target="_blank" rel="noreferrer">Ver repositorio<span class="sr-only">: {item.name} (abre en otra pestaña)</span> <Icon name="arrow" size={16}/></a>}</article>)}</div></details>
+      <p class="project-footnote mono">LOS CASOS PRIVADOS SE PRESENTAN DE FORMA ANÓNIMA. LAS ILUSTRACIONES SON CONCEPTUALES.</p>
+    </section>
+    <section class="about-section" id="sobre-mi" aria-labelledby="about-title"><div class="wrap about-grid">
+      <div><p class="eyebrow">02 / DETRÁS DEL CÓDIGO</p><h2 id="about-title">Curiosidad para entender.<br /><span>Oficio para construir.</span></h2><a class="text-link" href="/cv/">Conocé mi recorrido completo <Icon name="arrow" size={18}/></a></div>
+      <div class="about-copy"><p>Soy <strong>Fermín</strong>, desarrollador full stack de Santa Fe, Argentina. Me interesa entender cómo funciona un proceso y convertirlo en una herramienta útil.</p><p>Trabajo entre interfaces, lógica de negocio y bases de datos. En mis proyectos vas a encontrar desde portales web hasta sistemas de gestión e integraciones con dispositivos físicos.</p><div class="education-note"><Icon name="code" size={24}/><div><strong>Aprender también es parte del trabajo.</strong><p>Formación en Programación en la UTN y un recorrido que se construye proyecto a proyecto.</p></div></div></div>
+    </div></section>
+    <section class="section wrap expertise-section" aria-labelledby="expertise-title"><div class="section-heading compact"><div><p class="eyebrow">03 / CÓMO CONSTRUYO</p><h2 id="expertise-title">Cada capa cuenta.</h2></div><p>Las herramientas cambian.<br />Entender el problema sigue siendo el punto de partida.</p></div><div class="expertise-grid">{expertise.map((area) => <article><div class="expertise-number mono">{area.number}<Icon name="arrow" size={25}/></div><h3>{area.name}</h3><p>{area.description}</p><ul class="tags">{area.tools.map((tool) => <li>{tool}</li>)}</ul></article>)}</div></section>
+    <section class="section wrap journey-section" id="recorrido" aria-labelledby="journey-title"><div class="journey-intro"><p class="eyebrow">04 / EN CONTINUO DESARROLLO</p><h2 id="journey-title">Un recorrido.<br />Muchas piezas.</h2><p>Cada proyecto deja una herramienta nueva, una pregunta mejor y otra forma de resolver.</p><a class="text-link" href={profile.github} target="_blank" rel="noreferrer">Mi actividad en GitHub <Icon name="arrow" size={18}/><span class="sr-only"> (abre en otra pestaña)</span></a></div><ol class="timeline">{timeline.map((item) => <li><span class="timeline-dot"></span><span class="mono timeline-year">{item.year}</span><h3>{item.title}</h3><p>{item.description}</p></li>)}</ol></section>
+    <section class="contact-section" id="contacto" aria-labelledby="contact-title"><div class="wrap"><div class="contact-top"><p class="eyebrow">05 / SIGUIENTE PASO</p><span class="mono">UNA CONVERSACIÓN ES UN BUEN COMIENZO.</span></div><div class="contact-main"><h2 id="contact-title">¿Lo construimos<br /><span>juntos?</span></h2><a class="contact-arrow" href={`mailto:${profile.email}`} aria-label={`Escribime a ${profile.email}`}><Icon name="arrow" size={60}/></a></div><div class="contact-bottom"><a class="email-link" href={`mailto:${profile.email}`}>{profile.email}</a><div><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Icon name="arrow" size={17}/><span class="sr-only"> (abre en otra pestaña)</span></a><a href={profile.github} target="_blank" rel="noreferrer">GitHub <Icon name="arrow" size={17}/><span class="sr-only"> (abre en otra pestaña)</span></a><a href="/cv/">Currículum <Icon name="arrow" size={17}/></a></div></div></div></section>
+  </main>
+  <footer class="site-footer wrap"><a class="wordmark" href="#inicio" aria-label="Volver al inicio">fa<span>↗</span></a><p>© {new Date().getFullYear()} Fermín Alliot</p><span class="mono">HECHO CON CRITERIO, CURIOSIDAD Y CÓDIGO.</span><a href="#inicio" class="back-top" aria-label="Volver arriba">↑</a></footer>
+</Layout>
